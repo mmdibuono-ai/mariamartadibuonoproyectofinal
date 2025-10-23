@@ -1,0 +1,250 @@
+/* ========================= */
+/* ESTILOS ESPECÍFICOS DE LA PÁGINA CONTACTO */
+/* ========================= */
+
+.contacto-container {
+    padding: 60px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-grow: 1; 
+    text-align: center; /* Centra el botón 'Ver más' */
+}
+
+.contacto-titulo {
+    color: rgb(204, 127, 97); 
+    text-align: center;
+    /* ¡CAMBIO CLAVE! Aumenta el margen inferior */
+    margin-bottom: 80px; /* Aumentado de 50px a 80px (o puedes probar con 100px si quieres más espacio) */
+    font-size: 2.5rem;
+}
+
+/* ------------------ */
+/* 2. Contenedor GRID Principal (para los campos en 2 columnas) */
+/* ------------------ */
+.campos-grid-principal {
+    display: grid;
+    /* Define la estructura principal: 2 columnas */
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px 60px; /* Espacio vertical y horizontal (IMPORTANTE) */
+    margin-bottom: 30px;
+}
+
+.form-grupo {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; /* CLAVE: Centra el label y el input horizontalmente */
+    text-align: center; /* Centra el texto del label */
+}
+
+.form-grupo label {
+    /* Ya no necesita padding, el espacio lo da el gap o el margin-bottom */
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+/* ------------------ */
+/* 3. Estilo de los Inputs y Textarea */
+/* ------------------ */
+
+.form-grupo input:not([type="submit"]),
+.form-grupo textarea {
+    width: 100%;
+    padding: 8px 0; 
+    
+    /* Diseño de línea inferior - APLICADO A AMBOS (input y textarea) */
+    border: none; 
+    border-bottom: 1px solid #ccc; 
+    background-color: transparent; 
+    
+    outline: none; 
+    transition: border-color 0.3s;
+    font-size: 1rem;
+    text-align: center; 
+}
+
+/* 4. Campo de Mensaje (ajustamos el textarea para que parezca un área grande sin caja) */
+.form-mensaje textarea {
+    /* Mantenemos el ancho y el centrado del diseño anterior */
+    width: 60%; 
+        /* CAMBIOS CLAVE: Quitamos la altura mínima y le damos un padding/min-height */
+    min-height: 80px; /* Le damos una altura mínima visible */
+    padding: 10px 0; /* Ajustamos el padding para el espacio interno */
+        /* Nos aseguramos de que SÓLO tenga la línea inferior */
+    border: none; 
+    border-bottom: 1px solid #ccc; 
+    background-color: transparent; /* Fondo transparente */
+        resize: none; 
+    text-align: left; /* El texto escrito va a la izquierda */
+}
+
+/* ------------------ */
+/* 4. Campo de Mensaje (OCUPA DOS COLUMNAS) */
+/* ------------------ */
+
+.form-mensaje {
+    /* CLAVE: Hace que este elemento abarque las dos columnas del grid */
+    grid-column: 1 / 3; 
+    
+    /* Usamos flexbox para que el label y el textarea se apilen */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* CLAVE: Centra horizontalmente el label y el textarea */
+    gap: 5px; /* Espacio entre el label y el textarea */
+    margin-top: 20px; /* Espacio adicional arriba del campo de mensaje */
+}
+
+.form-mensaje label {
+    /* EL label de mensaje DEBE ESTAR CENTRADO como los demás */
+    font-weight: 500;
+    color: #444;
+    text-align: center; /* CLAVE: Centra el texto "Mensaje" */
+    width: 100%; /* Ocupa el 100% de las 2 columnas para el centrado */
+}
+
+.form-mensaje textarea {
+    /* El textarea debe ser una caja y DEBE ESTAR CENTRADO */
+    width: 60%; /* Ancho ajustado para que no sea enorme */
+    min-height: 120px;
+    
+    /* Vuelve a poner el borde completo para el textarea */
+    border: 1px solid #ccc; 
+    background-color: #fff; 
+    padding: 10px;
+    text-align: left; /* El texto escrito dentro del textarea debe ir a la izquierda */
+}
+
+/* ------------------ */
+/* 5. Estilo del Botón ENVIAR (Centrado en el centro del formulario) */
+/* ------------------ */
+
+.form-botones {
+    width: 100%;
+    max-width: 800px; 
+    margin: 30px auto 0 auto; 
+    text-align: center; /* CLAVE: Centra el botón ENVIAR */
+}
+
+/* ------------------ */
+/* A. ESTILO DEL NUEVO BOTÓN (ENLACE) */
+/* ------------------ */
+
+/* Reemplazamos el estilo del botón por el estilo del enlace */
+.btn-enviar-link {
+    padding: 12px 30px;
+    background-color: rgb(153, 95, 75); 
+    color: #fff !important; /* Importante para asegurar el color blanco en el texto del link */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Propiedad clave para que se vea como un botón centrado */
+    display: inline-block; 
+    text-decoration: none; /* Quita la línea de subrayado de los enlaces */
+}
+
+.btn-enviar-link:hover {
+    background-color: rgb(130, 80, 64);
+}
+
+/* ------------------ */
+/* B. MODAL DE ÉXITO (CSS :TARGET) */
+/* ------------------ */
+
+.modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+    opacity: 0; /* CLAVE: Oculto por defecto */
+    visibility: hidden; /* Oculto por defecto */
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1000; /* Asegura que esté por encima de todo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CLAVE: Muestra el modal cuando el URL coincide con su ID */
+.modal-wrapper:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-contenido {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease-out;
+}
+
+.modal-wrapper:target .modal-contenido {
+    transform: scale(1); /* Animación de entrada */
+}
+
+.modal-contenido h2 {
+    color: rgb(204, 127, 97);
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.modal-contenido p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+/* Botón de cerrar (la 'x') */
+.modal-cerrar {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #aaa;
+    font-size: 2rem;
+    text-decoration: none;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.modal-cerrar:hover {
+    color: #333;
+}
+
+/* Fondo para cerrar el modal al hacer clic fuera */
+.modal-cerrar-fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* ... (resto de estilos de botones y media queries) ... */
+
+/* ========================= */
+/* MEDIA QUERIES (Responsivo) */
+/* ========================= */
+
+@media (max-width: 768px) {
+    /* En tabletas y móviles, el grid pasa a ser una sola columna */
+    .campos-grid-principal {
+        grid-template-columns: 1fr; /* Una sola columna */
+        gap: 30px; 
+    }
+    
+    .form-mensaje textarea {
+        width: 90%; /* El textarea puede ser más ancho en móviles */
+    }
+}

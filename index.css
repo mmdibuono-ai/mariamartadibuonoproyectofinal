@@ -1,0 +1,198 @@
+/* ========================= */
+/* 1. RESET Y ESTILOS BASE GLOBALES */
+/* ========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
+}
+
+body {
+    background-color: #f8f8f8;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; /* Clave para que el footer se quede abajo */
+}
+
+/* Estilos de Tipografía General */
+h1 { color: rgb(204, 127, 97); text-align: center; }
+h2 { color: rgb(204, 127, 97); text-align: left; }
+p { color: dimgray; }
+
+/* Botón base */
+button {
+    padding: 10px 20px;
+    background-color: rgb(214, 178, 164);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #81493b;
+}
+
+/* ========================= */
+/* 2. HEADER Y NAVBAR (FINO Y ESTÉTICO - AHORA SIN BOOTSTRAP) */
+/* ========================= */
+
+.navbar-container {
+    background-color: rgb(214, 178, 164); 
+    border-bottom: 1px solid #c7a798; 
+    /* Las propiedades de Flexbox que antes eran de Bootstrap: */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1.5rem; /* Ajuste para que sea fino */
+}
+
+.logo img {
+    /* CAMBIO CLAVE: Aumentamos el tamaño del logo (ej: de 50px a 65px) */
+    height: 65px; 
+    width: auto;
+}
+
+/* Contenedor UL para la lista de enlaces (Nav List) */
+.nav-list {
+    display: flex;
+    list-style: none; /* Quitamos los puntos */
+    padding: 0;
+    margin: 0;
+}
+
+.nav-list li {
+    /* Aseguramos suficiente espacio entre cada botón */
+    margin-left: 1rem; 
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: #444; 
+    font-weight: 500;
+    text-transform: uppercase;
+    /* Añadimos padding para que el fondo del botón se vea bien */
+    padding: 0.4rem 0.6rem; 
+    border-radius: 4px; /* Bordes redondeados para el botón */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+    font-size: 0.95rem; 
+}
+
+.nav-list li a:hover {
+    /* CAMBIO CLAVE: Color de fondo para que parezca botón */
+    background-color: #8b5e3a; /* Un tono marrón cálido/terroso */
+    color: white; /* El texto se vuelve blanco para buen contraste */
+}
+
+/* ========================= */
+/* 3. CONTENIDO PRINCIPAL (GRID) */
+/* ========================= */
+.contenedor {
+    display: grid !important; 
+    /* CAMBIO CLAVE: Tres columnas. Ajusta las proporciones si quieres que sean diferentes */
+    grid-template-columns: 1.5fr 2fr 1.5fr; /* Imagen izquierda | Texto central | Imagen derecha */
+    gap: 30px; /* Espacio entre columnas */
+    padding: 60px 5%; /* Reducimos un poco el padding lateral para que quepan las 3 columnas */
+    flex-grow: 1; 
+    align-items: center; 
+}
+
+/* Estilos para la nueva imagen de la izquierda */
+.imagen-izquierda img {
+    max-width: 85%; /* Ajusta el tamaño de la imagen */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centra la imagen */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el bloque de texto (sin cambios importantes aquí) */
+.texto-boton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Ajustes para el texto en el centro */
+    text-align: center; /* Centramos el texto para una composición más simétrica */
+}
+
+.texto-boton h1 { 
+    text-align: center; /* Centramos el título */
+    margin-top: 0; 
+    font-size: 2.2rem; 
+}
+.texto-boton p { 
+    text-align: center; /* Centramos los párrafos */
+    font-size: 1.1rem; 
+    margin-bottom: 10px; 
+}
+
+.texto-boton div {
+    display: flex;
+    justify-content: center; /* Centramos el botón */
+    margin-top: 20px;
+}
+
+/* Estilos para la imagen de la derecha (la que ya tenías) */
+.imagen img {
+    max-width: 85%; /* Ajusta el tamaño de la imagen */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centra la imagen */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================= */
+/* 4. FOOTER (COMPACTO Y ESTÉTICO) */
+/* ========================= */
+
+.footer {
+    display: flex;
+    justify-content: space-around; 
+    align-items: flex-start; 
+    /* Más fino y compacto */
+    padding: 0.8rem 2rem; 
+    background: #f1f1f1; 
+    border-top: 1px solid #ddd;
+    font-size: 0.85rem; 
+    color: #666;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem; 
+}
+
+.footer-col p { margin: 0; padding: 0; }
+
+.redes { align-items: center; font-weight: 600; }
+.redes span { color: #333; margin-bottom: 0.1rem; }
+
+.redes .iconos { display: flex; gap: 0.5rem; margin-top: 0.3rem; }
+
+.icono-red { width: 24px; height: 24px; opacity: 0.8; transition: opacity 0.3s; }
+
+
+/* ========================= */
+/* 5. MEDIA QUERIES (RESPONSIVE) */
+/* ========================= */
+
+@media (max-width: 768px) {
+    .contenedor {
+        grid-template-columns: 1fr; /* Una sola columna en móvil */
+        padding: 40px 20px;
+        gap: 25px; /* Menos espacio en móvil */
+    }
+    /* Ordenamos los elementos en móvil si quieres un orden específico (ej: imagen1, texto, imagen2) */
+    .imagen-izquierda { order: -2; } /* Primera */
+    .texto-boton { order: -1; } /* Segunda */
+    .imagen { order: 0; } /* Tercera (por defecto) */
+
+    /* Centramos todo el contenido en móvil */
+    .texto-boton h1, .texto-boton p { text-align: center; }
+    .texto-boton div { justify-content: center; }
+}

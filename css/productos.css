@@ -1,0 +1,142 @@
+/* ========================= */
+/* ESTILOS ESPECÍFICOS DE LA PÁGINA PRODUCTOS */
+/* ========================= */
+
+/* ------------------ */
+/* Contenedor Principal y Título */
+/* ------------------ */
+.productos-container {
+    padding: 60px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-grow: 1; 
+    text-align: center; /* Centra el botón 'Ver más' */
+}
+
+.productos-container h1 {
+    color: rgb(204, 127, 97); /* El color naranja/marrón de tus títulos */
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+}
+
+/* ------------------ */
+/* 1. CONFIGURACIÓN DEL GRID DE PRODUCTOS */
+/* ------------------ */
+.productos-grid-container {
+    display: grid;
+    /* 4 columnas de igual ancho para pantallas grandes */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 30px; /* Espacio entre las tarjetas */
+    margin-bottom: 50px; /* Espacio antes del botón 'Ver más' */
+}
+
+/* ------------------ */
+/* 2. ESTILO DE LA TARJETA (CARD) */
+/* ------------------ */
+.producto-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex; /* Usamos Flexbox para ordenar el contenido verticalmente */
+    flex-direction: column;
+    justify-content: space-between; /* Intenta que el botón esté al fondo */
+}
+
+/* Títulos y Precios */
+.producto-titulo {
+    font-size: 1.15rem;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: 600;
+}
+
+.producto-precio {
+    font-size: 1.3rem;
+    color: #666;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Imagen del Producto (CLAVE para uniformidad) */
+.producto-img {
+    width: 100%; /* Ocupa todo el ancho de la tarjeta */
+    height: 180px; /* Altura fija para que todas se vean uniformes */
+    object-fit: cover; /* Asegura que la imagen llene el espacio sin distorsionarla */
+    border-radius: 6px;
+    border: 4px solid #fff; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón "Ver +" */
+.producto-btn {
+    padding: 8px 20px;
+    background-color: transparent; /* Fondo transparente */
+    color: rgb(204, 127, 97); 
+    border: 1px solid rgb(204, 127, 97); 
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: auto; /* Mantiene el botón pegado al fondo */
+    width: 80%;
+    align-self: center; /* Centra el botón en la tarjeta */
+}
+
+.producto-btn:hover {
+    background-color: rgb(204, 127, 97);
+    color: #fff;
+}
+
+/* Botón "Ver más" (el grande debajo del grid) */
+.btn-ver-mas {
+    padding: 12px 40px;
+    background-color: rgb(238, 225, 203); /* Fondo beige claro */
+    color: rgb(114, 88, 59); 
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: opacity 0.3s;
+    text-transform: uppercase;
+    display: inline-block; 
+}
+
+.btn-ver-mas:hover {
+    opacity: 0.8;
+}
+
+/* ------------------ */
+/* 3. MEDIA QUERIES (Responsivo) */
+/* ------------------ */
+
+@media (max-width: 1100px) {
+    /* En pantallas medianas, cambia a 3 columnas */
+    .productos-grid-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    /* En tabletas, cambia a 2 columnas */
+    .productos-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .productos-container {
+        padding: 40px 3%;
+    }
+}
+
+@media (max-width: 500px) {
+    /* En móviles, cambia a 1 columna */
+    .productos-grid-container {
+        grid-template-columns: 1fr;
+    }
+}

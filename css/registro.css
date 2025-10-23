@@ -1,0 +1,162 @@
+/* ========================= */
+/* ESTILOS ESPECÍFICOS DE LA PÁGINA REGISTRO/LOGIN */
+/* ========================= */
+
+.registro-container {
+    padding: 60px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-grow: 1; 
+    text-align: center; 
+}
+
+/* Título Principal */
+.registro-titulo {
+    color: rgb(204, 127, 97); 
+    text-align: center;
+    margin-bottom: 80px; 
+    font-size: 2.5rem;
+}
+
+/* ------------------ */
+/* 1. Contenedor GRID (Dos columnas) */
+/* ------------------ */
+.registro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 40px; 
+    max-width: 850px; /* Ancho máximo para el grid y centrado */
+    margin: 0 auto;
+}
+
+.registro-columna, .login-columna {
+    padding: 20px 30px;
+    /* Separador visual para las dos columnas */
+    border-right: 1px solid #ddd; 
+}
+
+.login-columna {
+    border-right: none; /* La última columna no lleva borde a la derecha */
+}
+
+/* Títulos de las columnas */
+.registro-columna h2, .login-columna h2 {
+    color: rgb(204, 127, 97); 
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-align: left; /* Alineado a la izquierda, como en el ejemplo */
+}
+
+/* ------------------ */
+/* 2. Estilo de los Campos (CLAVE: Alineación a la izquierda) */
+/* ------------------ */
+
+.form-grupo {
+    display: flex;
+    flex-direction: column; 
+    /* ¡CAMBIO CLAVE! Alinea todos los elementos a la izquierda de la columna */
+    align-items: flex-start; 
+    margin-bottom: 25px; 
+}
+
+.form-grupo label {
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+
+/* Inputs (Línea inferior) */
+.form-registro input, .form-login input {
+    width: 100%;
+    padding: 8px 0; 
+    
+    border: none; 
+    border-bottom: 1px solid #ccc; 
+    background-color: transparent; 
+    
+    outline: none; 
+    transition: border-color 0.3s;
+    font-size: 1rem;
+    /* ¡CAMBIO CLAVE! El texto escrito se alinea a la izquierda */
+    text-align: left; 
+}
+
+.form-registro input:focus, .form-login input:focus {
+    border-color: rgb(204, 127, 97); 
+}
+
+/* ------------------ */
+/* 3. Botones y Links */
+/* ------------------ */
+
+.btn-registro, .btn-login {
+    padding: 12px 30px;
+    color: #000; 
+    border: 1px solid #000; 
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 15px;
+    background-color: transparent; /* Fondo transparente por defecto */
+}
+
+/* Botón de Registro (a la izquierda) */
+.btn-registro {
+    float: left; /* Alinea a la izquierda en su columna */
+}
+.btn-registro:hover {
+    background-color: rgb(204, 127, 97);
+    color: #fff;
+    border-color: rgb(204, 127, 97);
+}
+
+
+/* Botón de Login (a la derecha) */
+.btn-login {
+    /* El botón INGRESA tiene fondo negro en el ejemplo */
+    background-color: rgb(204, 127, 97);
+    color: #fff;
+    border-color: rgb(204, 127, 97);
+    float: right; /* Alinea a la derecha en su columna */
+}
+.btn-login:hover {
+    background-color: rgb(204, 127, 97);
+    color: #fff;
+    border-color: rgb(204, 127, 97);
+}
+
+.link-recuperar {
+    font-size: 0.85rem;
+    color: rgb(204, 127, 97); /* Color azul para link */
+    text-decoration: none;
+    display: block;
+    margin-bottom: 25px;
+    text-align: right; /* Alinea el link a la derecha */
+}
+.link-recuperar:hover {
+    text-decoration: underline;
+}
+
+/* ------------------ */
+/* 4. MEDIA QUERIES (Responsivo) */
+/* ------------------ */
+
+@media (max-width: 768px) {
+    .registro-grid {
+        grid-template-columns: 1fr; /* Pasa a una sola columna */
+    }
+    
+    .registro-columna {
+        border-right: none; 
+        border-bottom: 1px solid #ddd; /* Separador inferior */
+        margin-bottom: 30px;
+    }
+    
+    .login-columna {
+        margin-top: 20px;
+    }
+}
