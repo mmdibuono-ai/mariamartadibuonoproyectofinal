@@ -1,6 +1,4 @@
-/* ========================= */
 /* ESTILOS ESPECÍFICOS DE LA PÁGINA NOSOTROS */
-/* ========================= */
 
 .nosotros-container {
     padding: 60px 5%;
@@ -9,11 +7,10 @@
     flex-grow: 1; 
 }
 
-/* ------------------ */
-/* A. SECCIÓN PRINCIPAL (GRID: Imagen y Texto) - ARRIBA */
-/* ------------------ */
+/* SECCIÓN PRINCIPAL */
+
 .presentacion-principal {
-    display: grid !important; /* FUERZA EL GRID */
+    display: grid !important; 
     grid-template-columns: 1.5fr 3fr; /* Imagen | Texto */
     gap: 40px;
     align-items: center; 
@@ -41,9 +38,7 @@
     text-align: left;
 }
 
-/* ------------------ */
-/* B. SECCIÓN HISTORIA (FLEXBOX: Texto y Fotos) - ABAJO */
-/* ------------------ */
+/* SECCIÓN HISTORIA (FLEXBOX: Texto y Fotos) - ABAJO */
 
 .historia-section h2 {
     text-align: left; 
@@ -59,41 +54,33 @@
 }
 
 .historia-contenido p {
-    flex: 2; /* Texto a la izquierda (ocupa el doble que las fotos) */
+    flex: 2; 
     font-size: 1.05rem;
     line-height: 1.7;
     text-align: left; 
 }
 
-/* ------------------------------------------------------------------ */
-/* ¡AJUSTE CLAVE! Cambiar a disposición vertical (columna) para las fotos */
-/* ------------------------------------------------------------------ */
 .historia-fotos {
-    flex: 1; /* Fotos a la derecha (ocupa la mitad que el texto) */
+    flex: 1; 
     display: flex;
-    flex-direction: column; /* <-- CAMBIO: Apila las imágenes verticalmente */
+    flex-direction: column; 
     justify-content: flex-start; 
     margin-top: 15px;
 }
 
-/* ---------------------------------------------------------------- */
-/* ¡AJUSTE CLAVE! Las imágenes ocupan el 100% del ancho del contenedor */
-/* ---------------------------------------------------------------- */
 .historia-thumb {
-    width: 100%; /* <-- CAMBIO: Ocupa todo el ancho disponible */
-    height: 400px; /* Mantener una altura uniforme (puedes ajustar este valor) */
-    object-fit: cover; /* Mantiene la proporción y evita la distorsión */
-    max-width: none; /* Asegura que la imagen pueda crecer hasta el 100% de su contenedor */
+    width: 100%; 
+    height: 400px; 
+    object-fit: cover; 
+    max-width: none; 
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
-/* ========================= */
-/* MEDIA QUERIES (Responsivo) */
-/* ========================= */
+/* MEDIA QUERIES (Responsive) */
 
 @media (max-width: 992px) {
-    /* Desactivar columnas en móvil */
+
     .presentacion-principal {
         grid-template-columns: 1fr !important;
     }
@@ -102,7 +89,6 @@
         align-items: center !important;
     }
 
-    /* Centrar todo en móvil */
     .presentacion-img, .presentacion-texto, .historia-section h2, .historia-contenido p {
         text-align: center !important;
     }
