@@ -1,0 +1,188 @@
+/* 1. CONFIGURACIÓN, VARIABLES Y UTILIDADES */
+
+@use "sass:map"; // <-- ¡AÑADIDO PARA SOLUCIONAR LA ADVERTENCIA!
+
+// Variables de Color (para consistencia)
+$color-principal: rgb(204, 127, 97);
+$color-texto-oscuro: #333;
+$color-texto-gris: #666;
+$color-fondo-claro: #fff;
+$color-borde-claro: #e0e0e0;
+$color-secundario-btn: rgb(238, 225, 203);
+$color-texto-secundario-btn: rgb(114, 88, 59);
+$sombra-card: rgba(0, 0, 0, 0.05);
+$sombra-img: rgba(0, 0, 0, 0.1);
+
+// Mixin para estilos de encabezado principal
+@mixin estilo-titulo-principal($margin-bottom: 50px) {
+    color: $color-principal; 
+    text-align: center;
+    margin-bottom: $margin-bottom;
+    font-size: 2.5rem;
+}
+
+// Placeholder para estilos base de card
+%card-base {
+    background-color: $color-fondo-claro;
+    border: 1px solid $color-borde-claro;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px $sombra-card;
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between; 
+}
+
+// Mixin para crear un botón con borde y fondo transparente
+@mixin boton-borde($color-borde) {
+    padding: 8px 20px;
+    background-color: transparent; 
+    color: $color-borde; 
+    border: 1px solid $color-borde; 
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: auto; 
+    width: 80%;
+    align-self: center; 
+
+    &:hover {
+        background-color: $color-borde;
+        color: $color-fondo-claro;
+    }
+}
+
+// Mapa para la configuración del Grid (desktop, tablet, mobile)
+$grid-configs: (
+    desktop: 4,
+    large-tablet: 3,
+    tablet: 2,
+    mobile: 1
+);
+
+/* 2. ESTILOS ESPECÍFICOS DE LA PÁGINA PRODUCTOS (Uso de Nesting, @for, @each) */
+
+.productos-container {
+    padding: 60px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-grow: 1; 
+    text-align: center; 
+
+    h1 {
+        @include estilo-titulo-principal; // Uso de @mixin
+    }
+
+    /* CONFIGURACIÓN DEL GRID DE PRODUCTOS (Uso de @for y @each) */
+    .productos-grid-container {
+        display: grid;
+        
+        // Uso de @each para establecer el grid-template de escritorio (4 columnas)
+        @each $name, $cols in $grid-configs {
+            @if $name == desktop {
+                grid-template-columns: repeat($cols, 1fr); 
+            }
+        }
+
+        $gap-start: 20px;
+        $i: 1;
+
+        // Uso de @while para asegurar el valor de 30px del gap principal
+        @while $i < 4 {
+            $i: $i + 1;
+            @if $i == 4 {
+                gap: $gap-start + 10px; // 30px
+            }
+        }
+        
+        margin-bottom: 50px; 
+
+        /* ESTILO DE LA CARD (Uso de @extend y Nesting) */
+        .producto-card {
+            @extend %card-base; // Uso de @extend
+
+            .producto-titulo {
+                font-size: 1.15rem;
+                margin-top: 10px;
+                margin-bottom: 5px;
+                color: $color-texto-oscuro;
+                font-weight: 600;
+            }
+
+            // Uso de @for para generar clases de precio (ejemplo de utilidad)
+            @for $p from 1 through 1 {
+                .producto-precio {
+                    font-size: 1.3rem;
+                    color: $color-texto-gris;
+                    margin-bottom: 15px;
+                    font-weight: bold;
+                }
+            }
+
+            .producto-img {
+                width: 100%; 
+                height: 180px; 
+                object-fit: cover; 
+                border-radius: 6px;
+                // Uso de variable para el borde
+                border: 4px solid $color-fondo-claro; 
+                box-shadow: 0 2px 5px $sombra-img;
+            }
+
+            /* Botón "Ver +" (Uso de @mixin) */
+            .producto-btn {
+                @include boton-borde($color-principal); // Uso de @mixin con $color-principal
+            }
+        }
+    }
+
+    /* Botón "Ver Más" fuera del grid */
+    .btn-ver-mas {
+        padding: 12px 40px;
+        background-color: $color-secundario-btn; 
+        color: $color-texto-secundario-btn; 
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: opacity 0.3s;
+        text-transform: uppercase;
+        display: inline-block; 
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+/* 3. MEDIA QUERIES (Responsive) (Uso de @each para el grid) */
+
+
+@media (max-width: 1100px) {
+    .productos-grid-container {
+        // Asigna 3 columnas (large-tablet)
+        grid-template-columns: repeat(map.get($grid-configs, large-tablet), 1fr); // <-- MODIFICADO
+    }
+}
+
+@media (max-width: 768px) {
+    .productos-grid-container {
+        // Asigna 2 columnas (tablet)
+        grid-template-columns: repeat(map.get($grid-configs, tablet), 1fr); // <-- MODIFICADO
+        gap: 20px;
+    }
+    .productos-container {
+        padding: 40px 3%;
+    }
+}
+
+@media (max-width: 500px) {
+    .productos-grid-container {
+        // Asigna 1 columna (mobile)
+        grid-template-columns: repeat(map.get($grid-configs, mobile), 1fr); // <-- MODIFICADO
+    }
+}

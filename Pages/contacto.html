@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-    <link rel="stylesheet" href="../index.css"> 
-    <link rel="stylesheet" href="../css/contacto.css"> <title>Todo Papel | Contacto</title>
+    <link rel="stylesheet" href="../css/indexstyle.css"> 
+    <link rel="stylesheet" href="../css/contacto.css"> 
+    <title>Todo Papel | Contacto</title>
 </head>
 
 <body>
@@ -33,55 +34,58 @@
         
         <h1 class="contacto-titulo">CONTACTO</h1>
 
-        <form action="#" method="POST" class="formulario-contacto">
-    
-    <div class="campos-grid-principal">
-        
-        <div class="form-grupo">
-            <label for="nombre">Nombre y Apellido</label>
-            <input type="text" id="nombre" name="nombre" required>
-        </div>
-        
-        <div class="form-grupo">
-            <label for="email">Correo Electrónico</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        
-        <div class="form-grupo">
-            <label for="telefono">Teléfono (Opcional)</label>
-            <input type="tel" id="telefono" name="telefono">
-        </div>
-        
-        <div class="form-grupo">
-            <label for="pais">País de residencia</label>
-            <input type="text" id="pais" name="pais">
-        </div>
+        <div class="contacto-grid"> 
 
-        <div class="form-grupo form-mensaje">
-            <label for="mensaje">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
-        </div>
-        
-    </div> 
-    
-    <div class="form-botones">
-      <a href="#modal-exito" class="btn-enviar-link">ENVIAR</a>
-    </div>
+            <form action="#" method="POST" class="formulario-contacto">
+                
+                <div class="campos-grid-principal">
+                    
+                    <div class="form-grupo">
+                        <label for="nombre">Nombre y Apellido</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    
+                    <div class="form-grupo">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-grupo">
+                        <label for="telefono">Teléfono (Opcional)</label>
+                        <input type="tel" id="telefono" name="telefono">
+                    </div>
+                    
+                    <div class="form-grupo">
+                        <label for="pais">País de residencia</label>
+                        <input type="text" id="pais" name="pais">
+                    </div>
 
-</form>
+                    <div class="form-grupo form-mensaje">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
+                    </div>
+                    
+                </div> 
+                
+                <div class="form-botones">
+                    <a href="#modal-exito" class="btn-enviar-link">ENVIAR</a>
+                </div>
 
-    </main>
+            </form>
+
+           </div>
+        </main>
 
     <div id="modal-exito" class="modal-wrapper">
-    <div class="modal-contenido">
-        <h2>¡Envío exitoso!</h2>
-        <p>Nos pondremos en contacto con vos en un plegado de hoja.</p>
+        <div class="modal-contenido">
+            <h2>¡Envío exitoso!</h2>
+            <p>Nos pondremos en contacto con vos en un plegado de hoja.</p>
+            
+            <a href="#" class="modal-cerrar">&times;</a>
+        </div>
         
-        <a href="#" class="modal-cerrar">&times;</a>
+        <a href="#" class="modal-cerrar-fondo"></a>
     </div>
-    
-    <a href="#" class="modal-cerrar-fondo"></a>
-</div>
 
     <footer class="footer">
         <div class="footer-col copy">
