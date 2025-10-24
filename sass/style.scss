@@ -1,7 +1,5 @@
 /* 1. CONFIGURACIÓN, VARIABLES Y UTILIDADES */
 
-
-
 // Variables de Color
 
 $color-principal: rgb(204, 127, 97);
@@ -17,7 +15,6 @@ $color-texto-gris: dimgray;
 $color-fondo: #f8f8f8;
 
 $color-fondo-footer: #f1f1f1;
-
 
 
 // Mixin para estilos de tipografía base de encabezados
@@ -95,9 +92,6 @@ $font-sizes: (
     }
 
 }
-
-
-
 
 
 /* 1. RESET Y ESTILOS BASE */
@@ -254,9 +248,6 @@ $i: 1;
 
 
 
-/* Generación de gap usando @while: 5px, 10px, 15px, 20px, 25px, 30px */
-
-/* En este caso se usa para mantener el valor original de 30px, pero muestra el concepto */
 
 @while $i <= 6 {
 

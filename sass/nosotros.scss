@@ -1,6 +1,6 @@
-/* 1. CONFIGURACIÓN, VARIABLES Y UTILIDADES (Para SCSS y CSS) */
+/* 1. CONFIGURACIÓN, VARIABLES Y UTILIDADES */
 
-// Variables de Color (para consistencia con el código anterior)
+// Variables de Color 
 $color-principal: rgb(204, 127, 97);
 $color-sombra-clara: rgba(0, 0, 0, 0.1);
 
@@ -19,21 +19,21 @@ $color-sombra-clara: rgba(0, 0, 0, 0.1);
     box-shadow: $sombra;
 }
 
-// Placeholder para estilos de encabezados de sección (usado con @extend)
+// Placeholder para estilos de encabezados de sección 
 %titulo-seccion {
     color: $color-principal;
     text-align: left;
     margin-bottom: 20px;
 }
 
-// Lista de tamaños de grid para usar con @each (ejemplo)
+// Lista de tamaños de grid 
 $grid-templates: (
     desktop: 1.5fr 3fr,
     mobile: 1fr
 );
 
 
-/* 2. ESTILOS ESPECÍFICOS DE LA PÁGINA NOSOTROS (Uso de Nesting) */
+/* 2. ESTILOS ESPECÍFICOS DE LA PÁGINA NOSOTROS */
 
 .nosotros-container {
     padding: 60px 5%;
@@ -41,12 +41,11 @@ $grid-templates: (
     margin: 0 auto;
     flex-grow: 1; 
 
-    /* SECCIÓN PRINCIPAL (Uso de @each) */
+    /* SECCIÓN PRINCIPAL */
     .presentacion-principal {
         display: grid !important; 
         
-        // Uso de @each para establecer el grid-template de escritorio
-        @each $name, $template in $grid-templates {
+            @each $name, $template in $grid-templates {
             @if $name == desktop {
                 grid-template-columns: $template; /* Imagen | Texto */
             }

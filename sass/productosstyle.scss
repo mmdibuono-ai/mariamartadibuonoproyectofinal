@@ -1,8 +1,8 @@
 /* 1. CONFIGURACIÓN, VARIABLES Y UTILIDADES */
 
-@use "sass:map"; // <-- ¡AÑADIDO PARA SOLUCIONAR LA ADVERTENCIA!
+@use "sass:map"; 
 
-// Variables de Color (para consistencia)
+// Variables de Color 
 $color-principal: rgb(204, 127, 97);
 $color-texto-oscuro: #333;
 $color-texto-gris: #666;
@@ -63,7 +63,7 @@ $grid-configs: (
     mobile: 1
 );
 
-/* 2. ESTILOS ESPECÍFICOS DE LA PÁGINA PRODUCTOS (Uso de Nesting, @for, @each) */
+/* 2. ESTILOS ESPECÍFICOS DE LA PÁGINA PRODUCTOS */
 
 .productos-container {
     padding: 60px 5%;
@@ -73,15 +73,14 @@ $grid-configs: (
     text-align: center; 
 
     h1 {
-        @include estilo-titulo-principal; // Uso de @mixin
+        @include estilo-titulo-principal; 
     }
 
-    /* CONFIGURACIÓN DEL GRID DE PRODUCTOS (Uso de @for y @each) */
+    /* CONFIGURACIÓN DEL GRID DE PRODUCTOS */
     .productos-grid-container {
         display: grid;
         
-        // Uso de @each para establecer el grid-template de escritorio (4 columnas)
-        @each $name, $cols in $grid-configs {
+            @each $name, $cols in $grid-configs {
             @if $name == desktop {
                 grid-template-columns: repeat($cols, 1fr); 
             }
@@ -100,9 +99,9 @@ $grid-configs: (
         
         margin-bottom: 50px; 
 
-        /* ESTILO DE LA CARD (Uso de @extend y Nesting) */
+        /* ESTILO DE LA CARD */
         .producto-card {
-            @extend %card-base; // Uso de @extend
+            @extend %card-base; 
 
             .producto-titulo {
                 font-size: 1.15rem;
@@ -127,8 +126,7 @@ $grid-configs: (
                 height: 180px; 
                 object-fit: cover; 
                 border-radius: 6px;
-                // Uso de variable para el borde
-                border: 4px solid $color-fondo-claro; 
+               border: 4px solid $color-fondo-claro; 
                 box-shadow: 0 2px 5px $sombra-img;
             }
 
@@ -165,14 +163,14 @@ $grid-configs: (
 @media (max-width: 1100px) {
     .productos-grid-container {
         // Asigna 3 columnas (large-tablet)
-        grid-template-columns: repeat(map.get($grid-configs, large-tablet), 1fr); // <-- MODIFICADO
+        grid-template-columns: repeat(map.get($grid-configs, large-tablet), 1fr); 
     }
 }
 
 @media (max-width: 768px) {
     .productos-grid-container {
         // Asigna 2 columnas (tablet)
-        grid-template-columns: repeat(map.get($grid-configs, tablet), 1fr); // <-- MODIFICADO
+        grid-template-columns: repeat(map.get($grid-configs, tablet), 1fr); 
         gap: 20px;
     }
     .productos-container {
@@ -183,6 +181,6 @@ $grid-configs: (
 @media (max-width: 500px) {
     .productos-grid-container {
         // Asigna 1 columna (mobile)
-        grid-template-columns: repeat(map.get($grid-configs, mobile), 1fr); // <-- MODIFICADO
+        grid-template-columns: repeat(map.get($grid-configs, mobile), 1fr); 
     }
 }
