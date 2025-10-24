@@ -1,0 +1,265 @@
+/* 1. CONFIGURACIÓN, VARIABLES Y UTILIDADES */
+
+// Variables de Color
+$color-principal: rgb(204, 127, 97);
+$color-secundario: rgb(214, 178, 164);
+$color-hover: #81493b;
+$color-texto-oscuro: #444;
+$color-texto-gris: dimgray;
+$color-fondo: #f8f8f8;
+$color-fondo-footer: #f1f1f1;
+
+// Mixin para estilos de tipografía base de encabezados
+@mixin estilo-encabezado($alineacion) {
+    color: $color-principal;
+    text-align: $alineacion;
+}
+
+// Placeholder para estilos de botón base (usado con @extend)
+%boton-base {
+    padding: 10px 20px;
+    background-color: $color-secundario;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+// Mixin para efectos hover de botones
+@mixin boton-hover($color) {
+    &:hover {
+        background-color: $color;
+    }
+}
+
+// Lista de tamaños de fuente para usar con @each
+$font-sizes: (
+    small: 0.8rem,
+    medium: 1.1rem,
+    large: 2.2rem
+);
+
+// Bucle @each para generar clases de texto (ejemplo de utilidad)
+/* .text-size-small, .text-size-medium, .text-size-large */
+@each $name, $size in $font-sizes {
+    .text-size-#{$name} {
+        font-size: $size;
+    }
+}
+
+
+/* 1. RESET Y ESTILOS BASE */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
+}
+
+body {
+    background-color: $color-fondo;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; 
+}
+
+/* Estilos de Tipografía General (Uso de @mixin) */
+h1 { @include estilo-encabezado(center); }
+h2 { @include estilo-encabezado(left); }
+p { color: $color-texto-gris; }
+
+/* Botón base (Uso de @extend y @mixin) */
+button {
+    @extend %boton-base;
+    @include boton-hover($color-hover);
+}
+
+/* 2. HEADER Y NAVBAR (Uso de Nesting) */
+
+.navbar-container {
+    background-color: $color-secundario; 
+    border-bottom: 1px solid #c7a798; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1.5rem; 
+
+    .logo img {
+        height: 65px; 
+        width: auto;
+    }
+
+    /* Contenedor UL para la lista de enlaces (Nav List) */
+    .nav-list {
+        display: flex;
+        list-style: none; 
+        padding: 0;
+        margin: 0;
+
+        li {
+            margin-left: 1rem; 
+
+            a {
+                text-decoration: none;
+                color: $color-texto-oscuro; 
+                font-weight: 500;
+                text-transform: uppercase;
+                padding: 0.4rem 0.6rem; 
+                border-radius: 4px; 
+                transition: background-color 0.3s, color 0.3s; 
+                font-size: 0.95rem; 
+
+                &:hover {
+                    background-color: #8b5e3a; 
+                    color: white; 
+                }
+            }
+        }
+    }
+}
+
+/* 3. CONTENIDO PRINCIPAL (GRID) (Uso de @while) */
+
+$grid-gap: 5px;
+$i: 1;
+
+/* Generación de gap usando @while: 5px, 10px, 15px, 20px, 25px, 30px */
+/* En este caso se usa para mantener el valor original de 30px, pero muestra el concepto */
+@while $i <= 6 {
+    @if $i == 6 {
+        .contenedor {
+            gap: $grid-gap * $i;
+        }
+    }
+    $i: $i + 1;
+}
+
+.contenedor {
+    display: grid !important; 
+    grid-template-columns: 1.5fr 2fr 1.5fr; 
+    padding: 60px 5%; 
+    flex-grow: 1; 
+    align-items: center; 
+
+    /* Mixin para estilos de imagen en el grid */
+    @mixin estilo-imagen-grid {
+        max-width: 85%; 
+        height: auto;
+        display: block;
+        margin: 0 auto; 
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .imagen-izquierda img {
+        @include estilo-imagen-grid;
+    }
+
+    .texto-boton {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center; 
+
+        h1 { 
+            text-align: center; 
+            margin-top: 0; 
+            font-size: 2.2rem; 
+        }
+        p { 
+            text-align: center; 
+            font-size: 1.1rem; 
+            margin-bottom: 10px; 
+        }
+
+        div {
+            display: flex;
+            justify-content: center; 
+            margin-top: 20px;
+        }
+    }
+
+    .imagen img {
+        @include estilo-imagen-grid;
+    }
+}
+
+/* 4. FOOTER */
+
+
+.footer {
+    display: flex;
+    justify-content: space-around; 
+    align-items: flex-start; 
+    padding: 0.8rem 2rem; 
+    background: $color-fondo-footer; 
+    border-top: 1px solid #ddd;
+    font-size: 0.85rem; 
+    color: #666;
+
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem; 
+
+        p { 
+            margin: 0; 
+            padding: 0; 
+        }
+    }
+
+    .redes { 
+        align-items: center; 
+        font-weight: 600; 
+
+        span { 
+            color: #333; 
+            margin-bottom: 0.1rem; 
+        }
+
+        .iconos { 
+            display: flex; 
+            gap: 0.5rem; 
+            margin-top: 0.3rem; 
+        }
+
+        /* Bucle @for para generar opacidades */
+        @for $i from 1 through 3 {
+            @if $i == 1 {
+                .icono-red {
+                    width: 24px; 
+                    height: 24px; 
+                    opacity: 0.8; 
+                    transition: opacity 0.3s;
+                }
+            }
+        }
+    }
+}
+
+/* 5. MEDIA QUERIES (RESPONSIVE) */
+
+
+@media (max-width: 768px) {
+    .contenedor {
+        grid-template-columns: 1fr; 
+        padding: 40px 20px;
+        gap: 25px; 
+    
+        .imagen-izquierda { order: -2; } 
+        .texto-boton { order: -1; } 
+        .imagen { order: 0; } 
+
+        .texto-boton { 
+            h1, p { 
+                text-align: center; 
+            }
+            div { 
+                justify-content: center; 
+            }
+        }
+    }
+}

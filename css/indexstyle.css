@@ -1,0 +1,216 @@
+@charset "UTF-8";
+/* 1. CONFIGURACIÓN, VARIABLES Y UTILIDADES */
+button {
+  padding: 10px 20px;
+  background-color: rgb(214, 178, 164);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+/* .text-size-small, .text-size-medium, .text-size-large */
+.text-size-small {
+  font-size: 0.8rem;
+}
+
+.text-size-medium {
+  font-size: 1.1rem;
+}
+
+.text-size-large {
+  font-size: 2.2rem;
+}
+
+/* 1. RESET Y ESTILOS BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif, sans-serif;
+}
+
+body {
+  background-color: #f8f8f8;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos de Tipografía General (Uso de @mixin) */
+h1 {
+  color: rgb(204, 127, 97);
+  text-align: center;
+}
+
+h2 {
+  color: rgb(204, 127, 97);
+  text-align: left;
+}
+
+p {
+  color: dimgray;
+}
+
+/* Botón base (Uso de @extend y @mixin) */
+button:hover {
+  background-color: #81493b;
+}
+
+/* 2. HEADER Y NAVBAR (Uso de Nesting) */
+.navbar-container {
+  background-color: rgb(214, 178, 164);
+  border-bottom: 1px solid #c7a798;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.5rem;
+}
+.navbar-container .logo img {
+  height: 65px;
+  width: auto;
+}
+.navbar-container .nav-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.navbar-container .nav-list li {
+  margin-left: 1rem;
+}
+.navbar-container .nav-list li a {
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 0.95rem;
+}
+.navbar-container .nav-list li a:hover {
+  background-color: #8b5e3a;
+  color: white;
+}
+
+/* 3. CONTENIDO PRINCIPAL (GRID) (Uso de @while) */
+/* Generación de gap usando @while: 5px, 10px, 15px, 20px, 25px, 30px */
+/* En este caso se usa para mantener el valor original de 30px, pero muestra el concepto */
+.contenedor {
+  gap: 30px;
+}
+
+.contenedor {
+  display: grid !important;
+  grid-template-columns: 1.5fr 2fr 1.5fr;
+  padding: 60px 5%;
+  flex-grow: 1;
+  align-items: center;
+  /* Mixin para estilos de imagen en el grid */
+}
+.contenedor .imagen-izquierda img {
+  max-width: 85%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.contenedor .texto-boton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.contenedor .texto-boton h1 {
+  text-align: center;
+  margin-top: 0;
+  font-size: 2.2rem;
+}
+.contenedor .texto-boton p {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+.contenedor .texto-boton div {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.contenedor .imagen img {
+  max-width: 85%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 4. FOOTER */
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 0.8rem 2rem;
+  background: #f1f1f1;
+  border-top: 1px solid #ddd;
+  font-size: 0.85rem;
+  color: #666;
+}
+.footer .footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.footer .footer-col p {
+  margin: 0;
+  padding: 0;
+}
+.footer .redes {
+  align-items: center;
+  font-weight: 600;
+}
+.footer .redes span {
+  color: #333;
+  margin-bottom: 0.1rem;
+}
+.footer .redes .iconos {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+}
+.footer .redes .icono-red {
+  width: 24px;
+  height: 24px;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+/* 5. MEDIA QUERIES (RESPONSIVE) */
+@media (max-width: 768px) {
+  .contenedor {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+    gap: 25px;
+  }
+  .contenedor .imagen-izquierda {
+    order: -2;
+  }
+  .contenedor .texto-boton {
+    order: -1;
+  }
+  .contenedor .imagen {
+    order: 0;
+  }
+  .contenedor .texto-boton h1, .contenedor .texto-boton p {
+    text-align: center;
+  }
+  .contenedor .texto-boton div {
+    justify-content: center;
+  }
+}
+
+/*# sourceMappingURL=indexstyle.css.map */
