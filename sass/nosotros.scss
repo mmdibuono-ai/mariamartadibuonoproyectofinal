@@ -1,0 +1,155 @@
+/* 1. CONFIGURACIÓN, VARIABLES Y UTILIDADES (Para SCSS y CSS) */
+
+// Variables de Color (para consistencia con el código anterior)
+$color-principal: rgb(204, 127, 97);
+$color-sombra-clara: rgba(0, 0, 0, 0.1);
+
+// Mixin para estilos comunes de texto
+@mixin estilo-texto($font-size, $line-height: 1.6, $align: left) {
+    font-size: $font-size;
+    line-height: $line-height;
+    text-align: $align;
+}
+
+// Mixin para estilos de imágenes con sombra
+@mixin imagen-estilizada($radius: 8px, $sombra: 0 5px 15px $color-sombra-clara) {
+    width: 100%;
+    height: auto;
+    border-radius: $radius;
+    box-shadow: $sombra;
+}
+
+// Placeholder para estilos de encabezados de sección (usado con @extend)
+%titulo-seccion {
+    color: $color-principal;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+// Lista de tamaños de grid para usar con @each (ejemplo)
+$grid-templates: (
+    desktop: 1.5fr 3fr,
+    mobile: 1fr
+);
+
+
+/* 2. ESTILOS ESPECÍFICOS DE LA PÁGINA NOSOTROS (Uso de Nesting) */
+
+.nosotros-container {
+    padding: 60px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-grow: 1; 
+
+    /* SECCIÓN PRINCIPAL (Uso de @each) */
+    .presentacion-principal {
+        display: grid !important; 
+        
+        // Uso de @each para establecer el grid-template de escritorio
+        @each $name, $template in $grid-templates {
+            @if $name == desktop {
+                grid-template-columns: $template; /* Imagen | Texto */
+            }
+        }
+        
+        gap: 40px;
+        align-items: center; 
+        margin-bottom: 80px;
+
+        .nosotros-img-hero {
+            max-width: 350px; 
+            @include imagen-estilizada; // Uso de @mixin
+        }
+
+        .presentacion-texto { 
+            h1 { 
+                @extend %titulo-seccion; // Uso de @extend
+                margin-bottom: 20px;
+                font-size: 2.5rem; 
+                text-align: left;
+            }
+            p {
+                @include estilo-texto(1.15rem, 1.8); // Uso de @mixin
+            }
+        }
+    }
+
+    /* SECCIÓN HISTORIA (FLEXBOX) */
+    .historia-section {
+        h2 {
+            @extend %titulo-seccion; // Uso de @extend
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .historia-contenido {
+            display: flex !important;
+            gap: 40px;
+            align-items: flex-start;
+
+            p {
+                flex: 2; 
+                @include estilo-texto(1.05rem, 1.7); // Uso de @mixin
+            }
+
+            .historia-fotos {
+                flex: 1; 
+                display: flex;
+                flex-direction: column; 
+                justify-content: flex-start; 
+                margin-top: 15px;
+
+                // Uso de @for para simular estilos de múltiples imágenes
+                @for $i from 1 through 1 {
+                    .historia-thumb {
+                        width: 100%; 
+                        height: 400px; 
+                        object-fit: cover; 
+                        max-width: none; 
+                        border-radius: 4px;
+                        box-shadow: 0 2px 5px $color-sombra-clara; 
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* 3. MEDIA QUERIES (Responsive) (Uso de @while para espaciado) */
+
+// Generamos variables para el espaciado en móviles
+$mobile-gap-start: 5;
+$mobile-gap-end: 40;
+$current-gap: $mobile-gap-start;
+
+@media (max-width: 992px) {
+
+    .presentacion-principal {
+        // Uso de @each para establecer el grid-template de móvil
+        @each $name, $template in $grid-templates {
+            @if $name == mobile {
+                grid-template-columns: $template !important;
+            }
+        }
+    }
+    
+    .historia-contenido {
+        flex-direction: column !important;
+        align-items: center !important;
+        
+        // Uso de @while para asegurar un gap específico en móvil (ejemplo de iteración)
+        @while $current-gap < $mobile-gap-end {
+            $current-gap: $current-gap + 5;
+        }
+        gap: $current-gap; // El gap final será 40px, asegurando el valor
+    }
+
+    .presentacion-img, .presentacion-texto, .historia-section h2, .historia-contenido p {
+        text-align: center !important;
+    }
+    
+    .presentacion-img { 
+        justify-content: center !important; 
+    }
+}

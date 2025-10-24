@@ -1,0 +1,93 @@
+@charset "UTF-8";
+/* 1. CONFIGURACIÓN, VARIABLES Y UTILIDADES (Para SCSS y CSS) */
+.nosotros-container .historia-section h2, .nosotros-container .presentacion-principal .presentacion-texto h1 {
+  color: rgb(204, 127, 97);
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+/* 2. ESTILOS ESPECÍFICOS DE LA PÁGINA NOSOTROS (Uso de Nesting) */
+.nosotros-container {
+  padding: 60px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-grow: 1;
+  /* SECCIÓN PRINCIPAL (Uso de @each) */
+}
+.nosotros-container .presentacion-principal {
+  display: grid !important;
+  grid-template-columns: 1.5fr 3fr; /* Imagen | Texto */
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+.nosotros-container .presentacion-principal .nosotros-img-hero {
+  max-width: 350px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.nosotros-container .presentacion-principal .presentacion-texto h1 {
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  text-align: left;
+}
+.nosotros-container .presentacion-principal .presentacion-texto p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  text-align: left;
+}
+.nosotros-container {
+  /* SECCIÓN HISTORIA (FLEXBOX) */
+}
+.nosotros-container .historia-section h2 {
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+.nosotros-container .historia-section .historia-contenido {
+  display: flex !important;
+  gap: 40px;
+  align-items: flex-start;
+}
+.nosotros-container .historia-section .historia-contenido p {
+  flex: 2;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  text-align: left;
+}
+.nosotros-container .historia-section .historia-contenido .historia-fotos {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 15px;
+}
+.nosotros-container .historia-section .historia-contenido .historia-fotos .historia-thumb {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  max-width: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 3. MEDIA QUERIES (Responsive) (Uso de @while para espaciado) */
+@media (max-width: 992px) {
+  .presentacion-principal {
+    grid-template-columns: 1fr !important;
+  }
+  .historia-contenido {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 5;
+  }
+  .presentacion-img, .presentacion-texto, .historia-section h2, .historia-contenido p {
+    text-align: center !important;
+  }
+  .presentacion-img {
+    justify-content: center !important;
+  }
+}
+
+/*# sourceMappingURL=nosotrosstyle.css.map */
